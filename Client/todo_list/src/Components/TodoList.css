@@ -1,0 +1,11 @@
+.todo-list-wrapper {
+    background-color: blue;
+    width: 53vh;
+    height: 15vh;
+    border-radius: .5vh;
+    margin-top: 7vh;
+}
+.todo-list-card {
+    display: flex;
+    
+}
