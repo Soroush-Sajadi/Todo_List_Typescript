@@ -11,12 +11,12 @@ const MakeNewTodo = () => {
     const [newTodo,  setNewTodo] = useState<string>('');
     const [complete, setComplete ] = useState<boolean>(false)
     const [data, setData] = useState<Array<TodoM>>([]);
-    const [getId, setGetId] = useState<string>('')
 
     const TaskIsDone = (id: string) => {
         data.map(item => {
             if (item.id === Number(id)) {
-                item.complete = !item.complete
+                item.complete = !item.complete;
+                setData(data => [...data])
             }
         })
     }
@@ -29,6 +29,7 @@ const MakeNewTodo = () => {
             }
         })
     }
+
     const getCheckedTaskId:any = (childData: string) => {
         TaskIsDone(childData)
     }

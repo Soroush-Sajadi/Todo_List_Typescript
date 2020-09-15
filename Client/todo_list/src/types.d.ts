@@ -10,6 +10,6 @@ type TodoM ={
     complete: boolean;
     id:number
 }
-type Checked = {
-    getCheckedTask: () => any
-}
+// type Checked = {
+//     getCheckedTask: () => any
+// }

@@ -1,5 +1,5 @@
 import React, {useEffect, useState, useRef, Key} from 'react';
-import {TodoM, Checked} from '../types'
+import {TodoM} from '../types'
 import './TodoList.css'
 
 
@@ -10,6 +10,10 @@ interface TodoListItemProps {
 }
 
 const TodoList: React.FC<TodoListItemProps> = ({todo, checkedTask, deletedTask}) => {
+
+    // const mystyles = {
+    //     textDecorationLine: 'line-through',
+    //  } as React.CSSProperties;
 
     const taskIsDone = (e: React.MouseEvent<HTMLElement>) => {
         const target = e.target as HTMLElement;
@@ -45,13 +49,16 @@ const TodoList: React.FC<TodoListItemProps> = ({todo, checkedTask, deletedTask})
     //     // saveInLocalStorage()
     // },[])
     return(
+        <>
+        
         <div className="todo-list-card">
-            <h3>{todo.text}</h3>
+            <h3 style={todo.complete ? { textDecorationLine: 'line-through'}:{textDecorationLine: 'none'}  }>{todo.text}</h3>
             <div className="todo-list-card-right">
                 <input id={`${todo.id}`} className="todo-list-card-checkbox" type="checkbox" value={`${todo.complete}`} onClick={taskIsDone}/>
                 <h5 id={`${todo.id}`} onClick={taskIsDeleted}>delete</h5>
             </div>
         </div>
+        </>
     )
 }
 
