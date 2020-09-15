@@ -1,13 +1,21 @@
 import React, {useEffect, useState, useRef, Key} from 'react';
-import {TodoM} from '../types'
+import {TodoM, Checked} from '../types'
 import './TodoList.css'
 
 
 interface TodoListItemProps {
     todo: TodoM;
+    checkedTask: any
 }
 
-const TodoList: React.FC<TodoListItemProps> = ({todo}) => {
+const TodoList: React.FC<TodoListItemProps> = ({todo, checkedTask}) => {
+
+    const taskIsDone = (e: React.MouseEvent<HTMLElement>) => {
+        const target = e.target as HTMLElement;
+        let attr = target.getAttribute("id");
+        checkedTask(attr)
+    }
+
     // const [currentValue, setCurrentValue] = useState<string | null>(() =>
     // (localStorage.getItem('Todos'))
     // );
@@ -33,7 +41,7 @@ const TodoList: React.FC<TodoListItemProps> = ({todo}) => {
         <div className="todo-list-card">
             <h3>{todo.text}</h3>
             <div className="todo-list-card-right">
-                <input className="todo-list-card-checkbox" type="checkbox" value={`${todo.complete}`}/>
+                <input id={`${todo.id}`} className="todo-list-card-checkbox" type="checkbox" value={`${todo.complete}`} onClick={taskIsDone}/>
                 <h5>delete</h5>
             </div>
         </div>
