@@ -5,15 +5,22 @@ import './TodoList.css'
 
 interface TodoListItemProps {
     todo: TodoM;
-    checkedTask: any
+    checkedTask: any;
+    deletedTask: any;
 }
 
-const TodoList: React.FC<TodoListItemProps> = ({todo, checkedTask}) => {
+const TodoList: React.FC<TodoListItemProps> = ({todo, checkedTask, deletedTask}) => {
 
     const taskIsDone = (e: React.MouseEvent<HTMLElement>) => {
         const target = e.target as HTMLElement;
         let attr = target.getAttribute("id");
         checkedTask(attr)
+    }
+
+    const taskIsDeleted = (e: React.MouseEvent<HTMLElement>) => {
+        const target = e.target as HTMLElement;
+        let attr = target.getAttribute("id");
+        deletedTask(attr)
     }
 
     // const [currentValue, setCurrentValue] = useState<string | null>(() =>
@@ -42,7 +49,7 @@ const TodoList: React.FC<TodoListItemProps> = ({todo, checkedTask}) => {
             <h3>{todo.text}</h3>
             <div className="todo-list-card-right">
                 <input id={`${todo.id}`} className="todo-list-card-checkbox" type="checkbox" value={`${todo.complete}`} onClick={taskIsDone}/>
-                <h5>delete</h5>
+                <h5 id={`${todo.id}`} onClick={taskIsDeleted}>delete</h5>
             </div>
         </div>
     )
