@@ -17,6 +17,9 @@
     outline: none;
     
 }
+.make-new-todo-input::placeholder {
+    text-align: center;
+}
 .make-new-todo-button {
     border: none;
     width: 8vh;

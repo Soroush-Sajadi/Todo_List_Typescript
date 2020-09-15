@@ -32,7 +32,10 @@ const TodoList: React.FC<TodoListItemProps> = ({todo}) => {
     return(
         <div className="todo-list-card">
             <h3>{todo.text}</h3>
-            <input className="todo-list-card-checkbox" type="checkbox" value={`${todo.complete}`}/>
+            <div className="todo-list-card-right">
+                <input className="todo-list-card-checkbox" type="checkbox" value={`${todo.complete}`}/>
+                <h5>delete</h5>
+            </div>
         </div>
     )
 }
