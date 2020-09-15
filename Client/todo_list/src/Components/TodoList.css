@@ -1,11 +1,26 @@
 .todo-list-wrapper {
+    /* background-color: blue; */
+    /* width: 53vh;
+    height: 15vh;
+    border-radius: .5vh;
+    margin-top: 4vh; */
+    display: flex;
+    flex-wrap: wrap;
+    margin-top: 6vh;
+    align-items: center;
+    justify-content: center;
+}
+.todo-list-card {
+    display: flex;
     background-color: blue;
     width: 53vh;
     height: 15vh;
     border-radius: .5vh;
-    margin-top: 7vh;
+    margin: 2vh;
 }
-.todo-list-card {
-    display: flex;
-    
+.todo-list-card h3 {
+    width: 47vh;
+}
+.todo-list-card input {
+    margin-top: 12%;
 }

@@ -30,11 +30,9 @@ const TodoList: React.FC<TodoListItemProps> = ({todo}) => {
     //     // saveInLocalStorage()
     // },[])
     return(
-        <div className="todo-list-wrapper">
-            <div className="todo-list-card">
-                <h3>{todo.text}</h3>
-                <input type="checkbox" value={`${todo.complete}`}/>
-            </div>
+        <div className="todo-list-card">
+            <h3>{todo.text}</h3>
+            <input className="todo-list-card-checkbox" type="checkbox" value={`${todo.complete}`}/>
         </div>
     )
 }
