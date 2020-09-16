@@ -1,11 +1,8 @@
-import React, { useState, Children } from 'react';
+import React, { useState, Children, useEffect } from 'react';
 import TodoList from './TodoList'
 import { TodoM } from '../types';
 import './MakeNewTodo.css';
 
-// interface TodoListItemProps {
-//     todo: Todo;
-// }
 
 const MakeNewTodo = () => {
     const [newTodo,  setNewTodo] = useState<string>('');
@@ -17,6 +14,7 @@ const MakeNewTodo = () => {
             if (item.id === Number(id)) {
                 item.complete = !item.complete;
                 setData(data => [...data])
+                localStorage.setItem('data', JSON.stringify(data))
             }
         })
     }
@@ -26,6 +24,7 @@ const MakeNewTodo = () => {
             if(item.id === Number(id)) {
                 data.splice(i, 1)
                 setData(data => [...data])
+                localStorage.setItem('data', JSON.stringify(data))
             }
         })
     }
@@ -40,12 +39,17 @@ const MakeNewTodo = () => {
 
     const addNewTodo =async () => {
         if (newTodo !== '') {
-            data.push({text:newTodo, complete: complete, id:data.length});
-            setData(() =>data)
+            data.push({text:newTodo, complete: complete, id:Math.floor(Math.random() * 100000000000)});
+            localStorage.setItem('data', JSON.stringify(data))
+            setData((data) => [...data])
             setNewTodo('');
-
         }
     }
+    useEffect(() => {
+        if (localStorage.getItem('data') !== null) {
+            setData(JSON.parse(`${localStorage.getItem('data')}`))
+        }
+    },[])
 
     return(
         <div className="make-new-todo-wrapper">
